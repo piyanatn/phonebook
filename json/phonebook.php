@@ -2,7 +2,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=utf8");
-$conn = new mysqli("192.168.1.8", "devadmin", "sysadmin11266", "appdb");
+$conn = new mysqli("localhost", "sa", "sa", "appdb");
 $result = $conn->query("SELECT depphoneno,depname FROM hosinfo_phonebook");
 
 
