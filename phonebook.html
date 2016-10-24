@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="phonebook">
+    <meta name="author" content="Piyanat Nimkhuntod">
+    <!-- <link rel="icon" href="../../favicon.ico">-->
+    <title>เบอร์โทรศัพท์</title>
+    <!-- Bootstrap core CSS -->
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            background: url(img/bg1.jpeg) no-repeat center center fixed;
+            background-size: cover;
+        }
+        table, th , td  {
+          border: 0px solid grey;
+          border-collapse: collapse;
+          padding: 5px;
+        }
+        table tr:nth-child(odd) {
+          background-color: #e6f3ff;
+        }
+        table tr:nth-child(even) {
+          background-color: #ffffff;
+        }
+
+    </style>
+     <script src="./node_modules/angular/angular.min.js"></script>
+     <script src="js/app.js"></script>
+  </head>
+<body ng-app="myApp">
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><i class="fa fa-phone-square fa-lgcd " aria-hidden="true"> <b>Phonebook</b></i></a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <br></br><br></br>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+
+
+            <div class="panel panel-primary">
+              <div class="panel-heading" > ค้นหา</div>
+              <div class="panel-body">
+                  <input type="text" class="input-medium search-query" ng-model="search.depname" placeholder="Search" value="">
+              </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading" > หอผู้ป่วย</div>
+              <div class="panel-body" ng-app="myApp" ng-controller="customersCtrl">
+                <table class="table" >
+                  <tr ng-repeat="x in names | filter : 'หอผู้ป่วย' | orderBy : 'depphoneno'  | filter:search:strict">
+                    <td><b>{{x.depphoneno}}</b></td>
+                    <td>{{x.depname}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <!--งานบริหาร -->
+            <div class="panel panel-primary">
+              <div class="panel-heading"> งานบริหาร</div>
+              <div class="panel-body" ng-app="myApp" ng-controller="customersCtrl">
+                <table class="table" >
+                  <tr ng-repeat="x in names | filter : 'งานบริหาร' | orderBy : 'depphoneno'  | filter:search:strict">
+                    <td><b>{{x.depphoneno}}</b></td>
+                    <td>{{x.depname}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!--งานเภสัชกรรม -->
+            <div class="panel panel-primary">
+              <div class="panel-heading">งานเภสัชกรรม</div>
+              <div class="panel-body" ng-app="myApp" ng-controller="customersCtrl">
+                <table class="table" >
+                  <tr ng-repeat="x in names | filter : 'งานเภสัชกรรม' | orderBy : 'depphoneno'  | filter:search:strict">
+                    <td><b>{{x.depphoneno}}</b></td>
+                    <td>{{x.depname}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!--งานอื่นๆ -->
+            <div class="panel panel-primary">
+              <div class="panel-heading">งานอื่นๆ</div>
+              <div class="panel-body" ng-app="myApp" ng-controller="customersCtrl">
+                <table class="table" >
+                  <tr ng-repeat="x in names | filter : 'งานอื่นๆ' | orderBy : 'depphoneno'  | filter:search:strict">
+                    <td><b>{{x.depphoneno}}</b></td>
+                    <td>{{x.depname}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-4">
+            <!--งานผู้ป่วยนอก -->
+            <div class="panel panel-primary">
+              <div class="panel-heading">งานผู้ป่วยนอก</div>
+              <div class="panel-body" ng-app="myApp" ng-controller="customersCtrl">
+                <table class="table" >
+                  <tr ng-repeat="x in names | filter : 'งานผู้ป่วยนอก' | orderBy : 'depphoneno'  | filter:search:strict">
+                    <td><b>{{x.depphoneno}}</b></td>
+                    <td>{{x.depname}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!--งานซ่อมบำรุง -->
+            <div class="panel panel-primary">
+              <div class="panel-heading">งานซ่อมบำรุง</div>
+              <div class="panel-body" ng-app="myApp" ng-controller="customersCtrl">
+                <table class="table" >
+                  <tr ng-repeat="x in names | filter : 'งานซ่อมบำรุง' | orderBy : 'depphoneno'  | filter:search:strict">
+                    <td><b>{{x.depphoneno}}</b></td>
+                    <td>{{x.depname}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!--งานชันสูตร (Lab) -->
+            <div class="panel panel-primary">
+              <div class="panel-heading">งานชันสูตร (Lab)</div>
+              <div class="panel-body" ng-app="myApp" ng-controller="customersCtrl">
+                <table class="table" >
+                  <tr ng-repeat="x in names | filter : 'งานชันสูตร (Lab)' | orderBy : 'depphoneno'  | filter:search:strict">
+                    <td><b>{{x.depphoneno}}</b></td>
+                    <td>{{x.depname}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!--งานชันสูตร (Lab) -->
+            <div class="panel panel-primary">
+              <div class="panel-heading">ห้องพักแพทย์</div>
+              <div class="panel-body" ng-app="myApp" ng-controller="customersCtrl">
+                <table class="table" >
+                  <tr ng-repeat="x in names | filter : 'ห้องพักแพทย์' | orderBy : 'depphoneno'  | filter:search:strict">
+                    <td><b>{{x.depphoneno}}</b></td>
+                    <td>{{x.depname}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+    </div>
+    </div>
+
+</body>
+</html>
